@@ -1,5 +1,9 @@
 package com.dkit.gd2.johnloane;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * Create a program using arrays that sorts a list of integers in descending order. Descending order is highest value to lowest
  * If the array has 106, 26, 81, 5, 15 your program should give back 106, 81, 21, 15, 5
@@ -15,8 +19,69 @@ public class App
 {
     public static void main( String[] args )
     {
-        int[] myIntegers = getIntegers();
-        int[] sorted = sortIntegers(myIntegers);
-        printArray(sorted);
+//        int[] myIntegers = getIntegers();
+//        int[] sorted = sortIntegers(myIntegers);
+//        printArray(sorted);
+
+        ArrayList<GroceryItem> johns_list = new ArrayList<>();
+        GroceryItem bread = new GroceryItem("Bread", 0.99f);
+        GroceryItem milk = new GroceryItem("Milk", 1.49f);
+        johns_list.add(bread);
+        johns_list.add(milk);
+
+        GroceryList testList = new GroceryList(johns_list);
+        testList.printGroceryList();
+    }
+
+    /*
+    TODO for homework - Implement mergesort instead of bubblesort here
+    This should change the complexity from O(n^2) to O(n)
+     */
+
+    private static int[] sortIntegers(int[] myIntegers)
+    {
+        int[] sortedArray = Arrays.copyOf(myIntegers, myIntegers.length);
+
+        boolean flag = true;
+        int temp;
+        while(flag)
+        {
+            flag = false;
+            for(int i=0; i < sortedArray.length-1;i++)
+            {
+                if(sortedArray[i] < sortedArray[i+1])
+                {
+                    temp = sortedArray[i];
+                    sortedArray[i] = sortedArray[i+1];
+                    sortedArray[i+1] = temp;
+                    flag = true;
+                }
+            }
+        }
+        return sortedArray;
+    }
+
+    private static void printArray(int[] myIntegers)
+    {
+        int i =1;
+        for(int myInt : myIntegers)
+        {
+            System.out.println("Element " + (i) + " is " + myInt);
+            i++;
+        }
+    }
+
+    private static int[] getIntegers()
+    {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("How many integers would you like to enter > ");
+        int arraySize = keyboard.nextInt();
+        int [] array = new int[arraySize];
+        for(int i=0; i < array.length; i++)
+        {
+            System.out.print("Enter value " + (i +1) + " >");
+            array[i] = keyboard.nextInt();
+        }
+        return array;
     }
 }
