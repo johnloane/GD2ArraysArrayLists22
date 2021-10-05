@@ -11,6 +11,11 @@ public class GroceryList
         this.groceryList = groceryList;
     }
 
+    public GroceryList()
+    {
+
+    }
+
     public ArrayList<GroceryItem> getGroceryList()
     {
         return groceryList;
@@ -44,25 +49,41 @@ public class GroceryList
         }
         return totalCost;
     }
-    /* TODO
-    Write for Homework
-     */
+
     public void removeGroceryItem(String itemName)
     {
+        int position = findItem(itemName);
+        if(position >= 0)
+        {
+            removeGroceryItem(position);
+        }
 
     }
 
-    /* TODO
-    Write for Homework
-     */
-    public void removeGroceryItem(int position)
+    private int findItem(String searchItem)
     {
-
+        return groceryList.indexOf(searchItem);
     }
-    /* TODO finish for homework */
-    public void modifyGroceryItem(int position, GroceryItem newItem)
-    {
 
+
+    private void removeGroceryItem(int position)
+    {
+        groceryList.remove(position);
+    }
+
+    public void modifyGroceryItem(String currentItem, GroceryItem newItem)
+    {
+        int position = findItem(currentItem);
+        if(position > 0)
+        {
+            modifyGroceryItem(position, newItem);
+        }
+    }
+
+    private void modifyGroceryItem(int position, GroceryItem newItem)
+    {
+        groceryList.set(position, newItem);
+        System.out.println("Grocery item " + (position + 1) + " has been modified");
     }
 
 

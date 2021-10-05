@@ -17,20 +17,43 @@ import java.util.Scanner;
  */
 public class App 
 {
+    private static Scanner keyboard = new Scanner(System.in);
+    private static GroceryList groceryList = new GroceryList();
+
     public static void main( String[] args )
     {
+        boolean quit = false;
+        int choice = 0;
+
+        printInstructions();
+
+        //Loop until the user want to quit, taking input and handling in a method
+        
 //        int[] myIntegers = getIntegers();
 //        int[] sorted = sortIntegers(myIntegers);
 //        printArray(sorted);
 
-        ArrayList<GroceryItem> johns_list = new ArrayList<>();
-        GroceryItem bread = new GroceryItem("Bread", 0.99f);
-        GroceryItem milk = new GroceryItem("Milk", 1.49f);
-        johns_list.add(bread);
-        johns_list.add(milk);
+//        ArrayList<GroceryItem> johns_list = new ArrayList<>();
+//        GroceryItem bread = new GroceryItem("Bread", 0.99f);
+//        GroceryItem milk = new GroceryItem("Milk", 1.49f);
+//        johns_list.add(bread);
+//        johns_list.add(milk);
+//
+//        GroceryList testList = new GroceryList(johns_list);
+//        testList.printGroceryList();
 
-        GroceryList testList = new GroceryList(johns_list);
-        testList.printGroceryList();
+    }
+
+    private static void printInstructions()
+    {
+        System.out.println("\nPress ");
+        System.out.println("\t 0 - To print the options");
+        System.out.println("\t 1 - To print the grocery list");
+        System.out.println("\t 2 - To add an item to the list");
+        System.out.println("\t 3 - To modify an item in the list");
+        System.out.println("\t 4 - To remove an item from the list");
+        System.out.println("\t 5 - To search the list");
+        System.out.println("\t 6 - To quit the app");
     }
 
     /*
