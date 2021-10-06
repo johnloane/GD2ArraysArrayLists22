@@ -50,7 +50,7 @@ public class GroceryList
         return totalCost;
     }
 
-    public void removeGroceryItem(String itemName)
+    public void removeGroceryItem(GroceryItem itemName)
     {
         int position = findItem(itemName);
         if(position >= 0)
@@ -65,17 +65,24 @@ public class GroceryList
         return groceryList.indexOf(searchItem);
     }
 
+    public int findItem(GroceryItem itemToSearch)
+    {
+        return groceryList.indexOf(itemToSearch);
+    }
+
 
     private void removeGroceryItem(int position)
     {
         groceryList.remove(position);
     }
 
-    public void modifyGroceryItem(String currentItem, GroceryItem newItem)
+    public void modifyGroceryItem(GroceryItem currentItem, GroceryItem newItem)
     {
         int position = findItem(currentItem);
-        if(position > 0)
+        System.out.println(position);
+        if(position >= 0)
         {
+            System.out.println("Calling modify grocery item");
             modifyGroceryItem(position, newItem);
         }
     }
@@ -87,4 +94,8 @@ public class GroceryList
     }
 
 
+    public void addGroceryItem(GroceryItem itemToAdd)
+    {
+        groceryList.add(itemToAdd);
+    }
 }
